@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Poems</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            padding-left: 30px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 250px;
+        }
+        input[type="submit"] {
+            padding: 8px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        #topicSelect {
+            padding: 8px;
+            width: 268px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            appearance: none; /* Remove default dropdown arrow */
+            -webkit-appearance: none; /* For older versions of Chrome/Safari */
+            -moz-appearance: none; /* For older versions of Firefox */
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="6"><polygon points="0,0 12,0 6,6" style="fill:%23333333"/></svg>'); /* Custom arrow */
+            background-repeat: no-repeat;
+            background-position: calc(100% - 10px) center;
+            background-size: 12px;
+            cursor: pointer;
+        }
+        #poemContainer {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            text-align: center; /* Center align content */
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px; /* Add space below heading */
+        }
+        #poemList {
+            list-style: none;
+            padding: 0;
+        }
+        #poemList li {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0; /* Add padding around each poem */
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generate Poems</h1>
+    <form method="post" id="poemForm">
+        {% csrf_token %}
+        <label for="topicSelect">Select a Topic:</label>
+        <select id="topicSelect" name="topicSelect">
+            <option value="Topic 1">Topic 1</option>
+            <option value="Topic 2">Topic 2</option>
+            <option value="Topic 3">Topic 3</option>
+            <option value="Topic 4">Topic 4</option>
+            <option value="Topic 5">Topic 5</option>
+            <option value="Topic 6">Topic 6</option>
+            <option value="Topic 7">Topic 7</option>
+            <option value="Topic 8">Topic 8</option>
+            <option value="Topic 9">Topic 9</option>
+            <option value="Topic 10">Topic 10</option>
+            <option value="Topic 11">Topic 11</option>
+            <option value="Topic 13">Topic 12</option>
+            <option value="Topic 13">Topic 13</option>
+            <option value="Topic 14">Topic 14</option>
+            <option value="Topic 15">Topic 15</option>
+        </select><br><br>
+        
+        <label for="input2">Start Words:</label>
+        <input type="text" id="input2" name="input2"><br><br>
+
+        <input type="submit" value="Generate">
+    </form>
+
+    <div id="poemContainer">
+        {% if poems %}
+            <h2>Generated Poems</h2>
+            <ul id="poemList">
+                {% for poem in poems %}
+                    <li>{{ poem }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
